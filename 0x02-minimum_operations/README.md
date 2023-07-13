@@ -1,4 +1,4 @@
-# MINIMUN OPERATIONS
+# MINIMUM OPERATIONS
 
 ## This folder attempts to answer the following question:
 
