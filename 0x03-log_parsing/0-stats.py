@@ -33,7 +33,7 @@ try:
 
         if line_count == 10:
             line_count = 0  # Reset line count
-            print('Total file size: {}'.format(total_file_size))
+            print('File size: {}'.format(total_file_size))
 
             # Print out status code counts
             for key, value in sorted(status_count.items()):
@@ -44,7 +44,7 @@ except Exception as err:
     pass
 
 finally:
-    print('Total file size: {}'.format(total_file_size))
+    print('File size: {}'.format(total_file_size))
     for key, value in sorted(status_count.items()):
         if value != 0:
             print('{}: {}'.format(key, value))
