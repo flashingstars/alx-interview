@@ -6,6 +6,7 @@ A script that reads stdin line by line and computes metrics
 
 import sys
 
+
 # Dictionary to store the count of all status codes
 status_count = {'200': 0, '301': 0, '400': 0, '401': 0, '403': 0,
                 '404': 0, '405': 0, '500': 0}
@@ -21,7 +22,7 @@ try:
             status_code = line_list[-2]
             file_size = int(line_list[-1])
 
-            # Check if the status code exists in the dictionary and increment its count
+            # Incrementing status code if it exists in the dictioary
             if status_code in status_count.keys():
                 status_count[status_code] += 1
 
