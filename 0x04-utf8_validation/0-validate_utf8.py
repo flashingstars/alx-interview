@@ -6,13 +6,12 @@ Function that returns a boolean answer when data represents a valid utf8 charact
 
 def validUTF8(data):
     """
-    Function that determines whether the given data is utf8.
+    Function that determines whether the given data is utf-8 compliant.
 
     Args:
-        data (data): Multiple characters represented by a
-        list of integers.
+        data (data): Multiple characters represented by a list of integers.
     Returns:
-        bool: True if data is a valid UTF-8, False otherwise.
+        bool: True if data is a valid UTF-8 integer, otherwise False.
     """
     counter = 0
 
@@ -28,7 +27,7 @@ def validUTF8(data):
                 counter = 3
             elif (num >> 7) != 0:
                 return False
-            #If counter is not 0, check if the current integer is a continuation byte
+        #If counter is not 0, check if the current integer is a continuation byte
         else:
             if (num >> 6) != 0b10:
                 return False
