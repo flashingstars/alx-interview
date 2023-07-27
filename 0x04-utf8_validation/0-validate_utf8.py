@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Function that returns a boolean answer when data represents a valid utf8 character
+Function that checks if data represents a valid utf8 character
 """
 
 
@@ -15,9 +15,9 @@ def validUTF8(data):
     """
     counter = 0
 
-    #Iterate through each integer in the list
+    # Iterate through each integer in the list
     for num in data:
-        #If counter is 0, check the number of leading 1's present
+        # If counter is 0, check the number of leading 1's present
         if counter == 0:
             if (num >> 5) == 0b110:
                 counter = 1
@@ -27,12 +27,11 @@ def validUTF8(data):
                 counter = 3
             elif (num >> 7) != 0:
                 return False
-        #If counter is not 0, check if the current integer is a continuation byte
+        # If counter is not 0, check if the current integer is a valid byte
         else:
             if (num >> 6) != 0b10:
                 return False
             counter -= 1
-            
-    #A valid counter is 0 after iterating through all the integers
+
+    # A valid counter is 0 after iterating through all the integers
     return counter == 0
- 
