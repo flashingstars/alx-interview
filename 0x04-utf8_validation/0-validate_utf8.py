@@ -32,6 +32,7 @@ def validUTF8(data):
         else:
             if (num >> 6) != 0b10:
                 return False
+            counter -= 1
             
     #A valid counter is 0 after iterating through all the integers
     return counter == 0
