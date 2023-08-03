@@ -1,8 +1,8 @@
 # NQUEENS
 
-## This is a folder containing solutions to the following question:
+## This is a folder containing a solution to the following question:
 
-The N queens puzzle is the challenge of placing N non-attacking queens on an N×N chessboard. Write a program that solves the N queens problem.
+0. The N queens puzzle is the challenge of placing N non-attacking queens on an N×N chessboard. Write a program that solves the N queens problem.
 
     - Usage: nqueens N
 
