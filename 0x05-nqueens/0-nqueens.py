@@ -7,57 +7,58 @@ N Queens placement on NxN chessboard
 import sys
 
 
-def generate_solutions(row, column):
-    solution = [[]]
-    for queen in range(row):
-        solution = place_queen(queen, column, solution)
-    return solution
+def is_safe(board, row, col, N):
+    # Check if there is a queen in the same column
+    for i in range(row):
+        if board[i][col] == 'Q':
+            return False
+    
+    # Check if there is a queen in the upper left diagonal
+    for i, j in zip(range(row-1, -1, -1), range(col-1, -1, -1)):
+        if board[i][j] == 'Q':
+            return False
+
+    # Check if there is a queen in the upper right diagonal
+    for i, j in zip(range(row-1, -1, -1), range(col+1, N)):
+        if board[i][j] == 'Q':
+            return False
+    
+    return True
 
 
-def place_queen(queen, column, prev_solution):
-    safe_position = []
-    for array in prev_solution:
-        for x in range(column):
-            if is_safe(queen, x, array):
-                safe_position.append(array + [x])
-    return safe_position
+def solve_nqueens(N):
+    if not N.isdigit():
+        print("N must be a number")
+        sys.exit(1)
+
+    N = int(N)
+    if N < 4:
+        print("N must be at least 4")
+        sys.exit(1)
+
+    board = [['.' for _ in range(N)] for _ in range(N)]
 
 
-def is_safe(q, x, array):
-    if x in array:
-        return (False)
-    else:
-        return all(abs(array[column] - x) != q - column
-                   for column in range(q))
+    def backtrack(row):
+        if row == N:
+            for i in range(N):
+                print(' '.join(board[i]))
+            print()
+            return
+        
+        for col in range(N):
+            if is_safe(board, row, col, N):
+                board[row][col] = 'Q'
+                backtrack(row + 1)
+                board[row][col] = '.'
+
+    backtrack(0)
 
 
-def init():
+if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("Usage: nqueens N")
         sys.exit(1)
-    if sys.argv[1].isdigit():
-        n = int(sys.argv[1])
-    else:
-        print("N must be a number")
-        sys.exit(1)
-    if n < 4:
-        print("N must be at least 4")
-        sys.exit(1)
-    return (n)
 
-
-def n_queens():
-
-    n = init()
-    # generate all solutions
-    solutions = generate_solutions(n, n)
-    # print solutions
-    for array in solutions:
-        clean = []
-        for q, x in enumerate(array):
-            clean.append([q, x])
-        print(clean)
-
-
-if __name__ == '__main__':
-    n_queens()
+    N = sys.argv[1]
+    solve_nqueens(N)
