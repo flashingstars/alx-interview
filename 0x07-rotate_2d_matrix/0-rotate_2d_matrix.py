@@ -5,7 +5,7 @@
 
 def transpose_matrix(matrix, n):
     """
-    Swapping the row and column elements 
+    Swapping the row and column elements
     Args:
         matrix (_type_): _description_
     """
@@ -20,7 +20,7 @@ def reverse_matrix(matrix):
 
     Args:
         matrix (_type_): _description_
-    """    
+    """
     for row in matrix:
         row.reverse()
 
@@ -31,7 +31,7 @@ def rotate_2d_matrix(matrix):
 
     Args:
         matrix (_type_): _description_
-    """    
+    """
     n = len(matrix)
 
     # transpose matrix
